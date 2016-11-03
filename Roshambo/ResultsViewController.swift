@@ -8,17 +8,22 @@
 
 import UIKit
 
-class ResultsViewController: UIViewController {
+class ResultsViewController: UIViewController
+{
     
-    override func viewDidLoad() {
+    // MHH - playtype integer set according to button tag from first view controller
+    var playType: Int?
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    // MHH - User pressed play again, close the view and return to Play view controller
+    @IBAction func dismiss(_ sender: AnyObject)
+    {
+        self.dismiss( animated: true, completion: nil )
     }
-    
     
 }

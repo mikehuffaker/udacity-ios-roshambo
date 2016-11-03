@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Play View Controller-->
+        <!--PlayVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PlayViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayVC" title="PlayVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="PlayViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,20 +23,26 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-wE-AhH" userLabel="StackViewRow1">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZG-Vw-iPk" userLabel="BtnPaper">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZG-Vw-iPk" userLabel="BtnPaper">
                                                 <state key="normal" image="paper"/>
+                                                <connections>
+                                                    <segue destination="mpf-bi-Uxt" kind="presentation" id="CGD-oR-Hr4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-P2-qLF" userLabel="StackViewRow2">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-0v-wgE" userLabel="BtnRock">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-0v-wgE" userLabel="BtnRock">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="111" id="cMx-pc-wrX"/>
                                                 </constraints>
                                                 <state key="normal" image="rock"/>
+                                                <connections>
+                                                    <action selector="playRock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cXI-b1-Zne"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjc-4t-fGh" userLabel="BtnScissors">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjc-4t-fGh" userLabel="BtnScissors">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="111" id="ffE-FJ-uFH"/>
                                                 </constraints>
@@ -63,14 +69,20 @@
                             <constraint firstItem="6kg-PZ-9rL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="twd-Wa-l9G"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BtnPaper" destination="uZG-Vw-iPk" id="018-dR-ljI"/>
+                        <outlet property="BtnRock" destination="cTI-0v-wgE" id="O6Y-Fg-dCN"/>
+                        <outlet property="BtnScissors" destination="sjc-4t-fGh" id="8og-oa-Tsb"/>
+                        <segue destination="mpf-bi-Uxt" kind="presentation" identifier="ResultsVC" id="VGh-G7-xSe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Results View Controller-->
+        <!--ResultsVC-->
         <scene sceneID="frM-Su-aap">
             <objects>
-                <viewController id="mpf-bi-Uxt" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultsVC" title="ResultsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mpf-bi-Uxt" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H9k-m9-y76"/>
                         <viewControllerLayoutGuide type="bottom" id="bo8-QZ-hax"/>
@@ -78,17 +90,44 @@
                     <view key="view" contentMode="scaleToFill" id="gYI-w0-mei">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WNs-Oy-Iog" userLabel="StackViewMain">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itsATie" translatesAutoresizingMaskIntoConstraints="NO" id="RZ8-Ad-6Wk" userLabel="ImgResults"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LblResults" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nas-bw-Yoq">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaE-dY-Xv5">
+                                        <state key="normal" title="BtnPlayAgain"/>
+                                        <connections>
+                                            <action selector="dismiss:" destination="mpf-bi-Uxt" eventType="touchUpInside" id="ph2-7j-OrG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bo8-QZ-hax" firstAttribute="top" secondItem="WNs-Oy-Iog" secondAttribute="bottom" constant="75" id="879-Ii-VHa"/>
+                            <constraint firstItem="WNs-Oy-Iog" firstAttribute="top" secondItem="H9k-m9-y76" secondAttribute="bottom" constant="125" id="OSc-V5-NQe"/>
+                            <constraint firstItem="WNs-Oy-Iog" firstAttribute="centerX" secondItem="gYI-w0-mei" secondAttribute="centerX" id="X7o-cH-8gX"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQF-UX-kUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="36"/>
+            <point key="canvasLocation" x="814" y="36"/>
         </scene>
     </scenes>
     <resources>
+        <image name="itsATie" width="183" height="200"/>
         <image name="paper" width="75" height="65"/>
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VGh-G7-xSe"/>
+    </inferredMetricsTieBreakers>
 </document>
