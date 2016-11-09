@@ -40,80 +40,15 @@ class ResultsViewController: UIViewController
     {
         super.viewWillAppear ( animated )
         print( "in ResultsViewController::viewWillAppear()")
-
-        var resultsMsg = ""
-        
         
         // Call random function to see what the computer picks
-        
-        // Set messages and images
-        switch playType
-        {
-            case .Nothing:
-                resultsMsg += "Nothing picked yet!"
-            case .Rock:
-                resultsMsg += "You picked Rock!"
-            case .Paper:
-                resultsMsg += "You picked Paper!"
-            case .Scissors:
-                resultsMsg += "You picked Scissors!"
-        }
-
         // MHH - Computer picks based on random value of 1-3
         computerPlayType = PlayType ( rawValue: randomPlayValue() )!
         
-        switch computerPlayType
-        {
-            case .Nothing:
-                resultsMsg += "\nComputer picked nothing!"
-            case .Rock:
-                resultsMsg += "\nComputer picked Rock!"
-            case .Paper:
-                resultsMsg += "\nComputer picked Paper!"
-            case .Scissors:
-                resultsMsg += "\nComputer picked Scissors!"
-        }
+        // MHH - pass the human's play type and the computers play type to this method
+        // to figure out who won and set the message/image appropriately
+        calculateAndSetResults( humanPlay: playType, computerPlay: computerPlayType )
 
-        // MHH - Handle different game outcomes and set message/image appropriately
-        if ( playType == computerPlayType )
-        {
-            resultsMsg += "\nIts a Tie!"
-            ImgResults.image = UIImage(named: "itsATie")
-        }
-        else if ( playType == .Rock && computerPlayType == .Scissors )
-        {
-            resultsMsg += "\nYou Win!"
-            ImgResults.image = UIImage(named: "RockCrushesScissors")
-        }
-        else if ( playType == .Paper && computerPlayType == .Rock )
-        {
-            resultsMsg += "\nYou Win!"
-            ImgResults.image = UIImage(named: "PaperCoversRock")
-        }
-        else if ( playType == .Scissors && computerPlayType == .Paper )
-        {
-            resultsMsg += "\nYou Win!"
-            ImgResults.image = UIImage(named: "ScissorsCutPaper")
-        }
-        else
-        {
-            resultsMsg += "\nYou Lose!"
-            if ( playType == .Rock && computerPlayType == .Paper )
-            {
-                ImgResults.image = UIImage(named: "PaperCoversRock")
-            }
-            else if ( playType == .Paper && computerPlayType == .Scissors )
-            {
-                ImgResults.image = UIImage(named: "ScissorsCutPaper")
-            }
-            else if ( playType == .Scissors && computerPlayType == .Rock )
-            {
-                ImgResults.image = UIImage(named: "RockCrushesScissors")
-               
-            }
-        }
-
-        LblResults.text = resultsMsg
     }
     
     func randomPlayValue() -> Int
@@ -124,6 +59,60 @@ class ResultsViewController: UIViewController
         
         print( "Returning:", randomValue)
         return Int(randomValue)
+    }
+    
+    func calculateAndSetResults( humanPlay: PlayType, computerPlay: PlayType  )
+    {
+        print( "in ResultsViewController::calculateAndSetResults()")
+
+        var resultsMsg = ""
+        let playRound = ( humanPlay, computerPlay )
+        
+        switch playRound
+        {
+        case ( .Rock, .Rock ):
+            resultsMsg += "Its a Tie!\nYou picked Rock and Computer picked Rock!"
+            ImgResults.image = UIImage(named: "itsATie")
+        
+        case ( .Rock, .Paper ):
+            resultsMsg += "You Lost!\nYou picked Rock and Computer picked Paper!"
+            ImgResults.image = UIImage(named: "PaperCoversRock")
+            
+        case ( .Rock, .Scissors ):
+            resultsMsg += "You Won!\nYou picked Rock and Computer picked Scissors!"
+            ImgResults.image = UIImage(named: "RockCrushesScissors")
+    
+        case ( .Paper, .Paper ):
+            resultsMsg += "Its a Tie!\n You picked Paper and Computer picked Paper!"
+            ImgResults.image = UIImage(named: "itsATie")
+        
+        case ( .Paper, .Rock ):
+            resultsMsg += "You Won!\nYou picked Paper and Computer picked Rock!"
+            ImgResults.image = UIImage(named: "PaperCoversRock")
+            
+        case ( .Paper, .Scissors ):
+            resultsMsg += "You Lost!\nYou picked Paper and Computer picked Scissors!"
+            ImgResults.image = UIImage(named: "ScissorsCutPaper")
+            
+        case ( .Scissors, .Scissors ):
+            resultsMsg += "Its a Tie!\n You picked Scissors and Computer picked Scissors!"
+            ImgResults.image = UIImage(named: "itsATie")
+      
+        case ( .Scissors, .Rock ):
+            resultsMsg += "You Lost!\nYou picked Scissors and Computer picked Rock!"
+            ImgResults.image = UIImage(named: "RockCrushesScissors")
+        
+        case ( .Scissors, .Paper ):
+            resultsMsg += "You Won!\nYou picked Scissors and Computer picked Paper!"
+            ImgResults.image = UIImage(named: "ScissorsCutPaper")
+            
+        default:
+            resultsMsg += "Unhandled condition - ask programmer for help!"
+        }
+
+        LblResults.text = resultsMsg
+
+        return
     }
     
     // MHH - User pressed play again, close the view and return to Play view controller
