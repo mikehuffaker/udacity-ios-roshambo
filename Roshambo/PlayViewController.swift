@@ -17,6 +17,9 @@ class PlayViewController: UIViewController
     
     var btnPressedTag = 0
     
+    // Array of match classes for history
+    var history = [Match]()
+    
     override func viewDidLoad()
     {
         print( "in PlayViewController::viewDidLoad()")
@@ -24,6 +27,11 @@ class PlayViewController: UIViewController
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    func appendMatchHistory( match: Match ) -> Void
+    {
+        history.append( match )
+    }
+    
     // Method 1 - User pressed Rock button, do a manual Seg with Code
     @IBAction func playRock(_ sender: AnyObject)
     {
@@ -48,7 +56,7 @@ class PlayViewController: UIViewController
 
         btnPressedTag = sender.tag
         print( "setting playType to: ", btnPressedTag )
-        controller.playType = PlayType ( rawValue: btnPressedTag )!
+        controller.humanPlayType = PlayType ( rawValue: btnPressedTag )!
         present(controller, animated: true, completion: nil)
     }
     
@@ -71,9 +79,10 @@ class PlayViewController: UIViewController
                 btnPressedTag = (btnTemp?.tag)!
             }
 
-            print( "setting playType to: ", btnPressedTag )
-            controller.playType = PlayType ( rawValue: btnPressedTag )!
+            print( "setting human playType to: ", btnPressedTag )
+            controller.humanPlayType = PlayType ( rawValue: btnPressedTag )!
         }
+        print( "Exiting PlayViewController::prepare()" )
     }
 }
 

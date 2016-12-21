@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF9179C71E0AD66A00AE265B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9179C61E0AD66A00AE265B /* HistoryViewController.swift */; };
 		CFB7082B1DC8CBA100638FD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7082A1DC8CBA100638FD4 /* AppDelegate.swift */; };
 		CFB7082D1DC8CBA100638FD4 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7082C1DC8CBA100638FD4 /* PlayViewController.swift */; };
 		CFB708301DC8CBA100638FD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFB7082E1DC8CBA100638FD4 /* Main.storyboard */; };
 		CFB708321DC8CBA100638FD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFB708311DC8CBA100638FD4 /* Assets.xcassets */; };
 		CFB708351DC8CBA100638FD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFB708331DC8CBA100638FD4 /* LaunchScreen.storyboard */; };
-		CFC2420C1DCCCC8100C40249 /* PlayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2420B1DCCCC8100C40249 /* PlayType.swift */; };
+		CFC2420C1DCCCC8100C40249 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2420B1DCCCC8100C40249 /* Match.swift */; };
 		CFFECDD81DC8F46700796479 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFECDD71DC8F46700796479 /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF9179C61E0AD66A00AE265B /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		CFB708271DC8CBA100638FD4 /* Roshambo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roshambo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB7082A1DC8CBA100638FD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFB7082C1DC8CBA100638FD4 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -24,7 +26,7 @@
 		CFB708311DC8CBA100638FD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFB708341DC8CBA100638FD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFB708361DC8CBA100638FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFC2420B1DCCCC8100C40249 /* PlayType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayType.swift; sourceTree = "<group>"; };
+		CFC2420B1DCCCC8100C40249 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		CFFECDD71DC8F46700796479 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +67,8 @@
 				CFB708311DC8CBA100638FD4 /* Assets.xcassets */,
 				CFB708331DC8CBA100638FD4 /* LaunchScreen.storyboard */,
 				CFB708361DC8CBA100638FD4 /* Info.plist */,
-				CFC2420B1DCCCC8100C40249 /* PlayType.swift */,
+				CFC2420B1DCCCC8100C40249 /* Match.swift */,
+				CF9179C61E0AD66A00AE265B /* HistoryViewController.swift */,
 			);
 			path = Roshambo;
 			sourceTree = "<group>";
@@ -143,8 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFB7082D1DC8CBA100638FD4 /* PlayViewController.swift in Sources */,
-				CFC2420C1DCCCC8100C40249 /* PlayType.swift in Sources */,
+				CFC2420C1DCCCC8100C40249 /* Match.swift in Sources */,
 				CFB7082B1DC8CBA100638FD4 /* AppDelegate.swift in Sources */,
+				CF9179C71E0AD66A00AE265B /* HistoryViewController.swift in Sources */,
 				CFFECDD81DC8F46700796479 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
