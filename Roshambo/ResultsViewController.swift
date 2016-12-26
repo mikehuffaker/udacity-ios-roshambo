@@ -15,14 +15,14 @@ class ResultsViewController: UIViewController
     @IBOutlet weak var LblResults: UILabel!
     @IBOutlet weak var ImgResults: UIImageView!
     
-    // MHH - playtype integer set according to button tag from first view controller
-    var humanPlayType: PlayType
+    var matchRound: Match!
     
-    required init?(coder: NSCoder)
+    required init?( coder: NSCoder )
     {
         print( "in ResultsViewController::init()")
 
-        humanPlayType = .Nothing
+        //humanPlayType = .Nothing
+        //matchRound = match
         super.init(coder: coder)
     }
     
@@ -50,9 +50,9 @@ class ResultsViewController: UIViewController
         print( "in ResultsViewController::calculateAndSetResults()")
 
         //let playRound = ( humanPlay, computerPlay )
-        let matchRound = Match( humanPlay: humanPlayType )
+        //let matchRound = Match( humanPlay: humanPlayType )
         
-        let winner = matchRound.calculateWinner()
+        var winner = matchRound.calculateWinner()
         
         LblResults.text = matchRound.message
         ImgResults.image = UIImage( named: matchRound.imageName )
@@ -61,7 +61,7 @@ class ResultsViewController: UIViewController
         // add the history onto the stack.
         //let PlayVC = self.parent as! PlayViewController
         
-        print( "Appending played match to PlayViewController history array" )
+        //print( "Appending played match to PlayViewController history array" )
         //PlayVC.appendMatchHistory( match: matchRound )
         
         return
