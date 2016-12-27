@@ -24,7 +24,8 @@ class Match
     
     // winner = 0: Tie, winner = 1: Computer, winner = 2: Human player
     var winner : Int
-    var message : String
+    var winMessage : String
+    var detailMessage : String
     var imageName : String
     
     // 2 constructors, one with both player's choices, one without.  Also using undefined
@@ -35,7 +36,8 @@ class Match
         self.computerPlay = PlayType( rawValue: 0 )!
         self.humanPlay = humanPlay
         self.winner = 0
-        self.message = "undefined"
+        self.winMessage = "undefined"
+        self.detailMessage = "undefined"
         self.imageName = "undefined"
     }
     
@@ -44,7 +46,8 @@ class Match
         self.computerPlay = computerPlay
         self.humanPlay = humanPlay
         self.winner = 0
-        self.message = "undefined"
+        self.winMessage = "undefined"
+        self.detailMessage = "undefined"
         self.imageName = "undefined"
     }
     
@@ -61,54 +64,67 @@ class Match
         {
             case ( .Rock, .Rock ):
                 winner = 0
-                message = "Its a Tie!\nYou picked Rock and Computer picked Rock!"
+                detailMessage = "You picked Rock and Computer picked Rock!"
                 imageName = "itsATie"
             
             case ( .Rock, .Paper ):
                 winner = 1
-                message = "You Lost!\nYou picked Rock and Computer picked Paper!"
+                detailMessage = "You picked Rock and Computer picked Paper!"
                 imageName = "PaperCoversRock"
             
             case ( .Rock, .Scissors ):
                 winner = 2
-                message = "You Won!\nYou picked Rock and Computer picked Scissors!"
+                detailMessage = "You picked Rock and Computer picked Scissors!"
                 imageName = "RockCrushesScissors"
             
             case ( .Paper, .Paper ):
                 winner = 0
-                message = "Its a Tie!\n You picked Paper and Computer picked Paper!"
+                detailMessage = "You picked Paper and Computer picked Paper!"
                 imageName = "itsATie"
             
             case ( .Paper, .Rock ):
                 winner = 2
-                message = "You Won!\nYou picked Paper and Computer picked Rock!"
+                detailMessage = "You picked Paper and Computer picked Rock!"
                 imageName = "PaperCoversRock"
             
             case ( .Paper, .Scissors ):
                 winner = 1
-                message = "You Lost!\nYou picked Paper and Computer picked Scissors!"
+                detailMessage = "You picked Paper and Computer picked Scissors!"
                 imageName = "ScissorsCutPaper"
             
             case ( .Scissors, .Scissors ):
                 winner = 0
-                message = "Its a Tie!\n You picked Scissors and Computer picked Scissors!"
+                detailMessage = "You picked Scissors and Computer picked Scissors!"
                 imageName = "itsATie"
             
             case ( .Scissors, .Rock ):
                 winner = 1
-                message = "You Lost!\nYou picked Scissors and Computer picked Rock!"
+                detailMessage = "You picked Scissors and Computer picked Rock!"
                 imageName = "RockCrushesScissors"
             
             case ( .Scissors, .Paper ):
                 winner = 2
-                message = "You Won!\nYou picked Scissors and Computer picked Paper!"
+                detailMessage = "You picked Scissors and Computer picked Paper!"
                 imageName = "ScissorsCutPaper"
             
             default:
                 winner = 0
-                message = "Unhandled condition - ask programmer for help!"
         }
 
+        // Set win/lose/tie message
+        if ( winner == 0 )
+        {
+            winMessage = "Its A Tie!"
+        }
+        else if ( winner == 1 )
+        {
+            winMessage = "You Lost!"
+        }
+        else if ( winner == 2 )
+        {
+            winMessage = "You Won!"
+        }
+        
         return winner
     }
     

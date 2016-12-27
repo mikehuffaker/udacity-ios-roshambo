@@ -52,18 +52,11 @@ class ResultsViewController: UIViewController
         //let playRound = ( humanPlay, computerPlay )
         //let matchRound = Match( humanPlay: humanPlayType )
         
-        var winner = matchRound.calculateWinner()
+        _ = matchRound.calculateWinner()
         
-        LblResults.text = matchRound.message
+        LblResults.text = matchRound.winMessage + "\n" + matchRound.detailMessage
         ImgResults.image = UIImage( named: matchRound.imageName )
-        
-        // Get the calling VC, in this case the play view controller and call the method to 
-        // add the history onto the stack.
-        //let PlayVC = self.parent as! PlayViewController
-        
-        //print( "Appending played match to PlayViewController history array" )
-        //PlayVC.appendMatchHistory( match: matchRound )
-        
+       
         return
     }
     

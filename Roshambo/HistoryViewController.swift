@@ -7,17 +7,22 @@
 //
 
 import Foundation
+import CoreGraphics
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    @IBOutlet weak var historyTable: UITableView!
+    
     var history = [Match]()
 
-    
     override func viewDidLoad()
     {
         print( "in HistoryViewController::viewDidLoad()")
         super.viewDidLoad()
+
+        historyTable.rowHeight = UITableViewAutomaticDimension
+        historyTable.estimatedRowHeight = 100
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -34,12 +39,24 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cellID = "HistoryCell"
         
-        let cell = tableView.dequeueReusableCell( withIdentifier: cellID, for: indexPath )
+        let cell:HistoryCell = tableView.dequeueReusableCell( withIdentifier: cellID, for: indexPath ) as! HistoryCell
         
         let match = self.history[(indexPath as NSIndexPath).row]
-        cell.textLabel!.text = match.message
         
-        // Set cell values
+        // Set table view cell values after parsing out from match class object
+        
+        // Draw the image in a rect, otherwise the tie image is slightly inconsistent with the others
+        // the table cells to not line up perfectly from row to row
+        let img = UIImage( named: match.imageName )
+        cell.imgResults!.image = img
+
+        //let imgRect = CGRect( x: 0, y: 0, width: 50, height: 50 )
+        //cell.imageView!.frame = imgRect
+                
+        cell.lblHdr.text = match.winMessage
+        cell.lblDtl.textColor = UIColor.darkGray
+        cell.lblDtl.adjustsFontSizeToFitWidth = true
+        cell.lblDtl.text = match.detailMessage
         
         return cell
     }
