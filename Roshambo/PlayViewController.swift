@@ -10,7 +10,6 @@ import UIKit
 
 class PlayViewController: UIViewController
 {
-
     @IBOutlet weak var BtnRock: UIButton!
     @IBOutlet weak var BtnPaper: UIButton!
     @IBOutlet weak var BtnScissors: UIButton!
@@ -37,7 +36,7 @@ class PlayViewController: UIViewController
         // OK - I took a different approach from the lesson.  Since Swift classes
         // are references, it makes the most sense to me to create a "Match" class for
         // each play and "Push" that match onto the history stack.  Since its a
-        // "reference" to the class, then the ResultsViewController can access it
+        // reference to the class, then the ResultsViewController can access it
         // and call the methods to calculate the winner, and volia, the class is
         // updated in the history array.  This makes more sense to me then passing
         // around a struct, plus we can encapsulate the logic to calculate the
@@ -53,6 +52,7 @@ class PlayViewController: UIViewController
     @IBAction func playRock(_ sender: AnyObject)
     {
         print( "in PlayViewController::playRock()")
+        
         btnPressedTag = sender.tag
         performSegue( withIdentifier: "ResultsVC", sender: self )
     }
@@ -70,10 +70,8 @@ class PlayViewController: UIViewController
         print( "in PlayViewController::playScissors()" )
 
         let controller = self.storyboard?.instantiateViewController( withIdentifier: "ResultsVC" ) as! ResultsViewController
-
         btnPressedTag = sender.tag
         setupMatch( button_tag: btnPressedTag, results_VC: controller )
-        //controller.humanPlayType = PlayType ( rawValue: btnPressedTag )!
         present(controller, animated: true, completion: nil)
     }
     
@@ -92,12 +90,11 @@ class PlayViewController: UIViewController
       
         if segue.identifier == "ResultsVC" || segue.identifier == "ResultsVC2"
         {
-            let controller = segue.destination as!
-            ResultsViewController
+            let controller = segue.destination as! ResultsViewController
 
             // Handle situation for paper button, I found that sender will be populated
             // with UIButton when the button is directly wired with a Segue option, but
-            // in other situations it is another object
+            // in other situations it was sometimes another object and causing a crash
             if (sender as? UIButton) != nil
             {
                 let btnTemp = (sender as? UIButton)
@@ -107,7 +104,7 @@ class PlayViewController: UIViewController
             setupMatch( button_tag: btnPressedTag, results_VC: controller )
         }
         // Before segue to the history view, give it a copy of the up-to-date
-        // history array
+        // history array with all matches
         else if ( segue.identifier == "HistoryVC" )
         {
             let controller = segue.destination as! HistoryViewController

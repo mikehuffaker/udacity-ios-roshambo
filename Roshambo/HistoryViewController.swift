@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreGraphics
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
@@ -21,6 +20,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         print( "in HistoryViewController::viewDidLoad()")
         super.viewDidLoad()
 
+        // Per a tutorial on this web page: https://www.raywenderlich.com/129059/self-sizing-table-view-cells
+        // this is supposed to help tell Auto Layout to resize the table cells as needed.  It does infact work.
+        // If I comment this code out, the lblDtl field will not resize to hold 2 lines of text when I test the
+        // app on a smaller screen, such as the iPhone 5 screen.
         historyTable.rowHeight = UITableViewAutomaticDimension
         historyTable.estimatedRowHeight = 100
     }
@@ -44,16 +47,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let match = self.history[(indexPath as NSIndexPath).row]
         
         // Set table view cell values after parsing out from match class object
-        
-        // Draw the image in a rect, otherwise the tie image is slightly inconsistent with the others
-        // the table cells to not line up perfectly from row to row
         let img = UIImage( named: match.imageName )
         cell.imgResults!.image = img
-
-        //let imgRect = CGRect( x: 0, y: 0, width: 50, height: 50 )
-        //cell.imageView!.frame = imgRect
-                
+        
         cell.lblHdr.text = match.winMessage
+        
         cell.lblDtl.textColor = UIColor.darkGray
         cell.lblDtl.adjustsFontSizeToFitWidth = true
         cell.lblDtl.text = match.detailMessage
@@ -68,6 +66,5 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.dismiss( animated: true, completion: nil )
     }
-    
 }
 

@@ -6,25 +6,22 @@
 //  Copyright © 2016 Mike Huffaker. All rights reserved.
 //
 
+import Foundation
 import UIKit
-
 
 class ResultsViewController: UIViewController
 {
-    
     @IBOutlet weak var LblResults: UILabel!
     @IBOutlet weak var ImgResults: UIImageView!
     
     var matchRound: Match!
     
-    required init?( coder: NSCoder )
-    {
-        print( "in ResultsViewController::init()")
-
-        //humanPlayType = .Nothing
-        //matchRound = match
-        super.init(coder: coder)
-    }
+    //required init?( coder: NSCoder )
+    //{
+    //    print( "in ResultsViewController::init()")
+    //
+    //    super.init(coder: coder)
+    //}
     
     override func viewDidLoad()
     {
@@ -39,19 +36,13 @@ class ResultsViewController: UIViewController
         super.viewWillAppear ( animated )
         print( "in ResultsViewController::viewWillAppear()")
         
-        // MHH - pass the human's play type and the computers play type to this method
-        // to figure out who won and set the message/image appropriately
         calculateAndSetResults()
-
     }
     
     func calculateAndSetResults()
     {
         print( "in ResultsViewController::calculateAndSetResults()")
 
-        //let playRound = ( humanPlay, computerPlay )
-        //let matchRound = Match( humanPlay: humanPlayType )
-        
         _ = matchRound.calculateWinner()
         
         LblResults.text = matchRound.winMessage + "\n" + matchRound.detailMessage
@@ -67,11 +58,4 @@ class ResultsViewController: UIViewController
 
         self.dismiss( animated: true, completion: nil )
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        print( "in ResultsViewController::prepare()" )
-        
-    }
-    
 }

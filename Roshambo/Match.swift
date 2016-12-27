@@ -17,6 +17,9 @@ enum PlayType : Int
 // Roshambo and calculating the winner.  I pulled it out of the view controller
 // since Roshambo is being updated with another view controller to display the
 // history.
+//
+// It could probably be cleaned up a bit more.  I went back and forth on whether I
+// should define the PlayType enum in the class or external to the class, as it is now.
 class Match
 {
     var computerPlay : PlayType

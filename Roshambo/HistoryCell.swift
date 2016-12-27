@@ -10,13 +10,8 @@ import Foundation
 import UIKit
 
 class HistoryCell: UITableViewCell
-
 {
-    
     @IBOutlet weak var imgResults: UIImageView!
     @IBOutlet weak var lblHdr: UILabel!
     @IBOutlet weak var lblDtl: UILabel!
-    
-
-
 }
