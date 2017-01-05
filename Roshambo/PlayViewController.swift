@@ -49,13 +49,13 @@ class PlayViewController: UIViewController
     }
     
     // Method 1 - User pressed Rock button, do a manual Seg with Code
-    @IBAction func playRock(_ sender: AnyObject)
-    {
-        print( "in PlayViewController::playRock()")
-        
-        btnPressedTag = sender.tag
-        performSegue( withIdentifier: "ResultsVC", sender: self )
-    }
+    //@IBAction func playRock(_ sender: AnyObject)
+    //{
+    //    print( "in PlayViewController::playRock()")
+    //
+    //    btnPressedTag = sender.tag
+    //    performSegue( withIdentifier: "ResultsVC", sender: self )
+    //}
     
     // Method 2 - Paper is wired directly to segue, no code in final implementation
     //@IBAction func playPaper(_ sender: AnyObject)
@@ -65,22 +65,22 @@ class PlayViewController: UIViewController
     //}
 
     // Method 3 - User pressed Scissors button, do a transfer to the next view without segue
-    @IBAction func playScissors(_ sender: AnyObject)
-    {
-        print( "in PlayViewController::playScissors()" )
+    //@IBAction func playScissors(_ sender: AnyObject)
+    //{
+    //    print( "in PlayViewController::playScissors()" )
 
-        let controller = self.storyboard?.instantiateViewController( withIdentifier: "ResultsVC" ) as! ResultsViewController
-        btnPressedTag = sender.tag
-        setupMatch( button_tag: btnPressedTag, results_VC: controller )
-        present(controller, animated: true, completion: nil)
-    }
+    //    let controller = self.storyboard?.instantiateViewController( withIdentifier: "ResultsVC" ) as! ResultsViewController
+    //    btnPressedTag = sender.tag
+    //    setupMatch( button_tag: btnPressedTag, results_VC: controller )
+    //    present(controller, animated: true, completion: nil)
+    //}
     
-    @IBAction func matchHistory(_ sender: Any)
-    {
-        print( "in PlayViewController::matchHistory" )
-        
-        performSegue( withIdentifier: "HistoryVC", sender: self )
-    }
+    //@IBAction func matchHistory(_ sender: Any)
+    //{
+    //  /  print( "in PlayViewController::matchHistory" )
+    //
+    //   performSegue( withIdentifier: "HistoryVC", sender: self )
+    //}
     
     // For Rock and Scissors, we call a segue, so handle setting the play value here
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -88,7 +88,7 @@ class PlayViewController: UIViewController
         print( "in PlayViewController::prepare()" )
         print( "Segue called was:" + segue.identifier! )
       
-        if segue.identifier == "ResultsVC" || segue.identifier == "ResultsVC2"
+        if segue.identifier == "ResultsVC"
         {
             let controller = segue.destination as! ResultsViewController
 
