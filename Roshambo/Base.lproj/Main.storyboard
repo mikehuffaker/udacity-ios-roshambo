@@ -163,7 +163,7 @@
                                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                                         <state key="normal" title="Play Again?"/>
                                                         <connections>
-                                                            <action selector="dismiss:" destination="mpf-bi-Uxt" eventType="touchUpInside" id="ph2-7j-OrG"/>
+                                                            <action selector="playAgain:" destination="mpf-bi-Uxt" eventType="touchUpInside" id="flY-VG-8kl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -215,7 +215,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="300" height="55"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="SaZ-Oi-86o" id="Btt-qx-G2w">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="54.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-6o-8uN" userLabel="LabelHdr">
@@ -271,7 +271,7 @@
                                         <items>
                                             <barButtonItem systemItem="done" id="nXw-cW-xgk">
                                                 <connections>
-                                                    <action selector="dismiss:" destination="ylE-hl-Agb" id="sa8-h3-i2B"/>
+                                                    <action selector="playAgain:" destination="ylE-hl-Agb" id="hp3-ra-4fz"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>

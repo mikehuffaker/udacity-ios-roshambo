@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Per a tutorial on this web page: https://www.raywenderlich.com/129059/self-sizing-table-view-cells
-        // this is supposed to help tell Auto Layout to resize the table cells as needed.  It does infact work.
+        // this is supposed to help tell Auto Layout to resize the table cells as needed.  It does in fact work.
         // If I comment this code out, the lblDtl field will not resize to hold 2 lines of text when I test the
         // app on a smaller screen, such as the iPhone 5 screen.
         historyTable.rowHeight = UITableViewAutomaticDimension
@@ -59,12 +59,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    // User pressed done - return to PlayViewController
-    @IBAction func dismiss(_ sender: Any)
+    @IBAction func playAgain(_ sender: Any)
     {
-        print( "in HistoryViewController::dismiss()")
-        
-        self.dismiss( animated: true, completion: nil )
+        if let navigationController = navigationController
+        {
+            navigationController.popToRootViewController( animated: true )
+        }
     }
 }
 

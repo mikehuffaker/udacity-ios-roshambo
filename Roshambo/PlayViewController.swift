@@ -22,8 +22,8 @@ class PlayViewController: UIViewController
     override func viewDidLoad()
     {
         print( "in PlayViewController::viewDidLoad()")
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     // method to consolidate setting up the match and play type before the
@@ -48,39 +48,6 @@ class PlayViewController: UIViewController
         history.append( results_VC.matchRound )
     }
     
-    // Method 1 - User pressed Rock button, do a manual Seg with Code
-    //@IBAction func playRock(_ sender: AnyObject)
-    //{
-    //    print( "in PlayViewController::playRock()")
-    //
-    //    btnPressedTag = sender.tag
-    //    performSegue( withIdentifier: "ResultsVC", sender: self )
-    //}
-    
-    // Method 2 - Paper is wired directly to segue, no code in final implementation
-    //@IBAction func playPaper(_ sender: AnyObject)
-    //{
-    //    print( "in PlayViewController::playPaper()")
-    //    btnPressedTag = sender.tag
-    //}
-
-    // Method 3 - User pressed Scissors button, do a transfer to the next view without segue
-    //@IBAction func playScissors(_ sender: AnyObject)
-    //{
-    //    print( "in PlayViewController::playScissors()" )
-
-    //    let controller = self.storyboard?.instantiateViewController( withIdentifier: "ResultsVC" ) as! ResultsViewController
-    //    btnPressedTag = sender.tag
-    //    setupMatch( button_tag: btnPressedTag, results_VC: controller )
-    //    present(controller, animated: true, completion: nil)
-    //}
-    
-    //@IBAction func matchHistory(_ sender: Any)
-    //{
-    //  /  print( "in PlayViewController::matchHistory" )
-    //
-    //   performSegue( withIdentifier: "HistoryVC", sender: self )
-    //}
     
     // For Rock and Scissors, we call a segue, so handle setting the play value here
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -92,7 +59,7 @@ class PlayViewController: UIViewController
         {
             let controller = segue.destination as! ResultsViewController
 
-            // Handle situation for paper button, I found that sender will be populated
+            // Handle situation different segues, I found that sender will be populated
             // with UIButton when the button is directly wired with a Segue option, but
             // in other situations it was sometimes another object and causing a crash
             if (sender as? UIButton) != nil
@@ -114,4 +81,3 @@ class PlayViewController: UIViewController
         print( "Exiting PlayViewController::prepare()" )
     }
 }
-

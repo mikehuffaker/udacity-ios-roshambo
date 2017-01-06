@@ -16,13 +16,6 @@ class ResultsViewController: UIViewController
     
     var matchRound: Match!
     
-    //required init?( coder: NSCoder )
-    //{
-    //    print( "in ResultsViewController::init()")
-    //
-    //    super.init(coder: coder)
-    //}
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -51,11 +44,11 @@ class ResultsViewController: UIViewController
         return
     }
     
-    // MHH - User pressed play again, close the view and return to Play view controller
-    @IBAction func dismiss(_ sender: AnyObject)
+    @IBAction func playAgain(_ sender: Any)
     {
-        print( "in ResultsViewController::dismiss()")
-
-        self.dismiss( animated: true, completion: nil )
+        if let navigationController = navigationController
+        {
+            navigationController.popToRootViewController( animated: true )
+        }
     }
 }
